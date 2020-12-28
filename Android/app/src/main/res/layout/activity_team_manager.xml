@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChooseTeam">
+
+    <TextView
+        android:id="@+id/tvJoinTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:textSize="30sp"
+        android:text="Join team"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:id="@+id/availableTeamsTV"
+        android:layout_below="@+id/tvJoinTeam"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="Team name"/>
+
+    <EditText
+        android:id="@+id/etJoinTeamPassword"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/availableTeamsTV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="Team password"
+        android:inputType="textPassword"/>
+    <Button
+        android:id="@+id/btnJoin"
+        android:layout_centerHorizontal="true"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Join"
+        android:textSize="18sp"
+        android:layout_below="@id/etJoinTeamPassword"/>
+    <TextView
+        android:id="@+id/tvCreateTeam"
+        android:layout_below="@+id/btnJoin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:textSize="30sp"
+        android:text="Create team"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:id="@+id/etCreateTeam"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvCreateTeam"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="Team name"/>
+    <EditText
+        android:id="@+id/etCreateTeamPassword"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etCreateTeam"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="Team password"
+        android:inputType="textPassword"/>
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_centerHorizontal="true"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Create"
+        android:textSize="18sp"
+        android:layout_below="@id/etCreateTeamPassword"/>
+
+</RelativeLayout>

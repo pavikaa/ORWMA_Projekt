@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChoosePlayers">
+    <TextView
+        android:id="@+id/tvChoosePlayers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose players!"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="30sp"/>
+    <ListView
+        android:id="@+id/playersList"
+        android:layout_below="@id/tvChoosePlayers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:layout_above="@id/btnDone"/>
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:textSize="20sp"
+        android:text="Done"/>
+
+
+</RelativeLayout>

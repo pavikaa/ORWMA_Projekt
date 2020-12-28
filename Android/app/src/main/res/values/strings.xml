@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ORWMA_Projekt</string>
+    <string name="username">E-mail</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="retypePassword">Retype the password</string>
+    <string name="register">Register</string>
+    <string name="fullName">Full name</string>
+    <string name="errorEmailVerification">Check you email to verify your account</string>
+    <string name="errorLogin">Failed to log in!</string>
+    <string name="errorPasswordLength">Please use a password at least 6 characters long</string>
+    <string name="errorEmail">Check e-mail address</string>
+    <string name="errorEmptyFields">Some of the fields are empty</string>
+    <string name="errorPasswordMissmatch">Entered passwords don\'t match</string>
+    <string name="successfulRegistration">User has been registered successfully! You can log in now.</string>
+    <string name="unsuccessfulRegistration">Failed to register! Try again!</string>
+    <string name="edit_players">Edit players</string>
+    <string name="welcomeSplash">Welcome\u0020</string>
+    <string name="welcomeSplashAlternative">Welcome Player</string>
+</resources>
