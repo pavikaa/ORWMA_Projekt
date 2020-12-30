@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.ORWMA_Projekt"
         android:windowSoftInputMode="adjustResize">
@@ -15,7 +15,6 @@
         <activity android:name=".ChoosePlayers" />
         <activity android:name=".ViewPagerActivity" />
         <activity android:name=".WelcomeSplash" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterUser" />
         <activity android:name=".LoginActivity">
             <intent-filter>

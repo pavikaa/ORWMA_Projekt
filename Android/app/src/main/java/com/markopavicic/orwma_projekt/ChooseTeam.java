@@ -1,8 +1,5 @@
 package com.markopavicic.orwma_projekt;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +8,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -47,14 +47,14 @@ public class ChooseTeam extends AppCompatActivity implements View.OnClickListene
                     reference.child("Teams").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(check < 1){
+                            if (check < 1) {
                                 check++;
-                            for (DataSnapshot nameSnapshot : snapshot.getChildren()) {
-                                if (nameSnapshot.child("Players").child(fullName).exists()) {
-                                    String teamName = nameSnapshot.child("name").getValue(String.class);
-                                    teamNames.add(teamName);
+                                for (DataSnapshot nameSnapshot : snapshot.getChildren()) {
+                                    if (nameSnapshot.child("Players").child(fullName).exists()) {
+                                        String teamName = nameSnapshot.child("name").getValue(String.class);
+                                        teamNames.add(teamName);
+                                    }
                                 }
-                            }
                             }
                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ChooseTeam.this, android.R.layout.simple_spinner_item, teamNames);
                             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -89,17 +89,17 @@ public class ChooseTeam extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnChoose:
-                if(spinner!=null && spinner.getSelectedItem()!=null){
-                String name = spinner.getSelectedItem().toString();
-                Intent intent = new Intent(getBaseContext(), ChoosePlayers.class);
-                intent.putExtra("ChosenTeamName", name);
-                startActivity(intent);
-                finish();}
-                else {
-                    Toast.makeText(ChooseTeam.this, "You have to join or create a team first", Toast.LENGTH_LONG).show();
+                if (spinner != null && spinner.getSelectedItem() != null) {
+                    String name = spinner.getSelectedItem().toString();
+                    Intent intent = new Intent(getBaseContext(), ChoosePlayers.class);
+                    intent.putExtra("ChosenTeamName", name);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(ChooseTeam.this, (R.string.toastChooseTeam), Toast.LENGTH_LONG).show();
                     startActivity(new Intent(this, TeamManager.class));
                 }
-                    break;
+                break;
             case R.id.tvManageTeams:
                 startActivity(new Intent(this, TeamManager.class));
                 break;

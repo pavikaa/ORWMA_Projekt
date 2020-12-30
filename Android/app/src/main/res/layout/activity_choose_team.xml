@@ -9,7 +9,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:textSize="30sp"
-        android:text="Choose team"
+        android:text="@string/choose_team"
         android:layout_centerHorizontal="true"/>
 
     <Spinner
@@ -25,7 +25,7 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="250dp"
-        android:text="Choose"
+        android:text="@string/choose"
         android:textSize="18sp"
         android:layout_below="@id/joinedTeamsDropDown"/>
     <TextView
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:text="Manage teams"
+        android:text="@string/manage_teams"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:textSize="20sp"/>

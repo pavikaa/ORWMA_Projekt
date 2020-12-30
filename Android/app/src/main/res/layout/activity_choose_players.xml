@@ -9,7 +9,7 @@
         android:id="@+id/tvChoosePlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose players!"
+        android:text="@string/choose_players"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:textSize="30sp"/>
@@ -29,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
         android:textSize="20sp"
-        android:text="Done"/>
+        android:text="@string/done"/>
 
 
 </RelativeLayout>

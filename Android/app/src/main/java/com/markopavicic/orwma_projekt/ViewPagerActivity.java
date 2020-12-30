@@ -1,11 +1,10 @@
 package com.markopavicic.orwma_projekt;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -16,6 +15,7 @@ public class ViewPagerActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private ArrayList<String> chosenPlayers;
     private String chosenTeamName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +25,8 @@ public class ViewPagerActivity extends AppCompatActivity {
         chosenPlayers = getIntent().getStringArrayListExtra("ChosenPlayers");
         chosenTeamName = getIntent().getStringExtra("teamName");
         Bundle bundle = new Bundle();
-        bundle.putStringArrayList("chosenPlayers",chosenPlayers);
-        AddGameDataFragment add=new AddGameDataFragment();
+        bundle.putStringArrayList("chosenPlayers", chosenPlayers);
+        AddGameDataFragment add = new AddGameDataFragment();
         add.setArguments(bundle);
     }
 
@@ -41,12 +41,12 @@ public class ViewPagerActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.setPageTransformer(false, new DepthPageTransformer());
     }
-    public ArrayList<String> getChosenPlayers()
-    {
+
+    public ArrayList<String> getChosenPlayers() {
         return chosenPlayers;
     }
-    public String getChosenTeamName()
-    {
+
+    public String getChosenTeamName() {
         return chosenTeamName;
     }
 }

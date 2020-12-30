@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ORWMA_Projekt</string>
+    <string name="app_name">Game stats</string>
     <string name="username">E-mail</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
@@ -17,4 +17,26 @@
     <string name="edit_players">Edit players</string>
     <string name="welcomeSplash">Welcome\u0020</string>
     <string name="welcomeSplashAlternative">Welcome Player</string>
+    <string name="choose_players">Choose players!</string>
+    <string name="done">Done</string>
+    <string name="choose_team">Choose team</string>
+    <string name="choose">Choose</string>
+    <string name="manage_teams">Manage teams</string>
+    <string name="join_team">Join team</string>
+    <string name="team_name">Team name</string>
+    <string name="team_password">Team password</string>
+    <string name="join">Join</string>
+    <string name="create_team">Create team</string>
+    <string name="create">Create</string>
+    <string name="who_won">Who won?</string>
+    <string name="add_win">Add win</string>
+    <string name="toastTeamJoined">Team joined successfully</string>
+    <string name="toastErrorFetching">Error fetching data</string>
+    <string name="labelWins">Wins</string>
+    <string name="labelGamesPlayed">Games played</string>
+    <string name="labelGameToWinRatio">Game to win ratio</string>
+    <string name="toastError">Error</string>
+    <string name="toastChooseTeam">You have to join or create a team first</string>
+    <string name="toastChoosePlayer">You must choose at least one player</string>
+    <string name="toastDataAdded">Data added successfully</string>
 </resources>

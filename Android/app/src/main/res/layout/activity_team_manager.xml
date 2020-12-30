@@ -13,7 +13,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:textSize="30sp"
-        android:text="Join team"
+        android:text="@string/join_team"
         android:layout_centerHorizontal="true"/>
     <EditText
         android:id="@+id/availableTeamsTV"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:hint="Team name"/>
+        android:hint="@string/team_name"/>
 
     <EditText
         android:id="@+id/etJoinTeamPassword"
@@ -31,7 +31,7 @@
         android:layout_below="@id/availableTeamsTV"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:hint="Team password"
+        android:hint="@string/team_password"
         android:inputType="textPassword"/>
     <Button
         android:id="@+id/btnJoin"
@@ -39,7 +39,7 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
-        android:text="Join"
+        android:text="@string/join"
         android:textSize="18sp"
         android:layout_below="@id/etJoinTeamPassword"/>
     <TextView
@@ -50,7 +50,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:textSize="30sp"
-        android:text="Create team"
+        android:text="@string/create_team"
         android:layout_centerHorizontal="true"/>
     <EditText
         android:id="@+id/etCreateTeam"
@@ -59,7 +59,7 @@
         android:layout_below="@id/tvCreateTeam"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:hint="Team name"/>
+        android:hint="@string/team_name"/>
     <EditText
         android:id="@+id/etCreateTeamPassword"
         android:layout_width="200dp"
@@ -67,7 +67,7 @@
         android:layout_below="@id/etCreateTeam"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:hint="Team password"
+        android:hint="@string/team_password"
         android:inputType="textPassword"/>
     <Button
         android:id="@+id/btnCreate"
@@ -75,7 +75,7 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
-        android:text="Create"
+        android:text="@string/create"
         android:textSize="18sp"
         android:layout_below="@id/etCreateTeamPassword"/>
 

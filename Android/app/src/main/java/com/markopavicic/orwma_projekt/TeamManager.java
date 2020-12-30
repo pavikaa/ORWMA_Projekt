@@ -1,16 +1,14 @@
 package com.markopavicic.orwma_projekt;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -120,7 +118,7 @@ public class TeamManager extends AppCompatActivity implements View.OnClickListen
                 for (DataSnapshot teams : snapshot.getChildren()) {
                     Team mTeam = teams.getValue(Team.class);
                     if (mTeam.getName().equals(name) && mTeam.getPassword().equals(password)) {
-                        Toast.makeText(TeamManager.this, "Team joined successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(TeamManager.this, (R.string.toastTeamJoined), Toast.LENGTH_LONG).show();
                         addPlayerToTeam(teams.getKey());
                     }
                 }

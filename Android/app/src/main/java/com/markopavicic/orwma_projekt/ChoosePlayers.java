@@ -1,19 +1,16 @@
 package com.markopavicic.orwma_projekt;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,12 +21,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChoosePlayers extends AppCompatActivity implements View.OnClickListener{
+public class ChoosePlayers extends AppCompatActivity implements View.OnClickListener {
     Button btnDone;
     DatabaseReference reference;
     ListView list;
-    List<String> playerNames,selectedPlayers;
+    List<String> playerNames, selectedPlayers;
     String teamName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +36,7 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
     }
 
     private void init() {
-        teamName=getIntent().getStringExtra("ChosenTeamName");
+        teamName = getIntent().getStringExtra("ChosenTeamName");
         btnDone = findViewById(R.id.btnDone);
         btnDone.setOnClickListener(ChoosePlayers.this);
         list = findViewById(R.id.playersList);
@@ -50,13 +48,13 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
                 for (DataSnapshot nameSnapshot : snapshot.getChildren()) {
                     {
                         playerNames = new ArrayList<String>();
-                        if(nameSnapshot.child("name").getValue(String.class).equals(teamName)){
-                            for (DataSnapshot keySnapshot : nameSnapshot.child("Players").getChildren())
-                            {
+                        if (nameSnapshot.child("name").getValue(String.class).equals(teamName)) {
+                            for (DataSnapshot keySnapshot : nameSnapshot.child("Players").getChildren()) {
                                 String playerName = keySnapshot.getKey();
                                 playerNames.add(playerName);
-                                setupListView();}
+                                setupListView();
                             }
+                        }
 
                     }
                 }
@@ -79,26 +77,24 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        boolean check=false;
+        boolean check = false;
         SparseBooleanArray checked = list.getCheckedItemPositions();
-        for(int i=0;i<checked.size();i++)
-        {
-            if(checked.valueAt(i))
-                check=true;
+        for (int i = 0; i < checked.size(); i++) {
+            if (checked.valueAt(i))
+                check = true;
         }
         selectedPlayers = new ArrayList<String>();
-        if(check){
-        for (int i = 0; i < checked.size(); i++)
-        {
-            int position = checked.keyAt(i);
-            if (checked.valueAt(i))
-               selectedPlayers.add(list.getAdapter().getItem(position).toString());
-        }
-        Intent intent = new Intent(getBaseContext(), ViewPagerActivity.class);
-        intent.putStringArrayListExtra("ChosenPlayers", (ArrayList<String>) selectedPlayers);
-        intent.putExtra("teamName",teamName);
-        startActivity(intent);}
-        else
-            Toast.makeText(this, "You must choose at least one player", Toast.LENGTH_LONG).show();
+        if (check) {
+            for (int i = 0; i < checked.size(); i++) {
+                int position = checked.keyAt(i);
+                if (checked.valueAt(i))
+                    selectedPlayers.add(list.getAdapter().getItem(position).toString());
+            }
+            Intent intent = new Intent(getBaseContext(), ViewPagerActivity.class);
+            intent.putStringArrayListExtra("ChosenPlayers", (ArrayList<String>) selectedPlayers);
+            intent.putExtra("teamName", teamName);
+            startActivity(intent);
+        } else
+            Toast.makeText(this, (R.string.toastChoosePlayer), Toast.LENGTH_LONG).show();
     }
 }
