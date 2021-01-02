@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class WelcomeSplash extends AppCompatActivity {
 
-    private static final int SPLASH_TIME_OUT = 3000;
+    private static final int SPLASH_TIME_OUT = 2500;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;

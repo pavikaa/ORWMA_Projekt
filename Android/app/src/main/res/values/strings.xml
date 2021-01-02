@@ -14,9 +14,6 @@
     <string name="errorPasswordMissmatch">Entered passwords don\'t match</string>
     <string name="successfulRegistration">User has been registered successfully! You can log in now.</string>
     <string name="unsuccessfulRegistration">Failed to register! Try again!</string>
-    <string name="edit_players">Edit players</string>
-    <string name="welcomeSplash">Welcome\u0020</string>
-    <string name="welcomeSplashAlternative">Welcome Player</string>
     <string name="choose_players">Choose players!</string>
     <string name="done">Done</string>
     <string name="choose_team">Choose team</string>
@@ -34,9 +31,11 @@
     <string name="toastErrorFetching">Error fetching data</string>
     <string name="labelWins">Wins</string>
     <string name="labelGamesPlayed">Games played</string>
-    <string name="labelGameToWinRatio">Game to win ratio</string>
+    <string name="labelGameToWinRatio">Win to game ratio</string>
     <string name="toastError">Error</string>
     <string name="toastChooseTeam">You have to join or create a team first</string>
     <string name="toastChoosePlayer">You must choose at least one player</string>
     <string name="toastDataAdded">Data added successfully</string>
+    <string name="welcomeSplash">Welcome\u0020</string>
+    <string name="welcomeSplashAlternative">Welcome Player</string>
 </resources>

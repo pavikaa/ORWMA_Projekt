@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ORWMA_Projekt"
         android:windowSoftInputMode="adjustResize">
-        <activity android:name=".TeamManager"></activity>
+        <activity android:name=".DataAddedSplash"></activity>
+        <activity android:name=".TeamManager" />
         <activity android:name=".ChooseTeam" />
         <activity android:name=".ChoosePlayers" />
         <activity android:name=".ViewPagerActivity" />

@@ -1,5 +1,6 @@
 package com.markopavicic.orwma_projekt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +72,9 @@ public class AddGameDataFragment extends Fragment implements View.OnClickListene
                                         nameSnapshot.child("Players").child(chosenPlayers.get(i)).child("Played").getRef().setValue(secondValue).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(getContext(), (R.string.toastDataAdded), Toast.LENGTH_LONG).show();
+                                                Intent i = new Intent(getActivity(), DataAddedSplash.class);
+                                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(i);
                                             }
                                         });
                                     }

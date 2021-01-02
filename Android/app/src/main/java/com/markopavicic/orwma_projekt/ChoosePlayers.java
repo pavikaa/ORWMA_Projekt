@@ -94,6 +94,7 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
             intent.putStringArrayListExtra("ChosenPlayers", (ArrayList<String>) selectedPlayers);
             intent.putExtra("teamName", teamName);
             startActivity(intent);
+            finish();
         } else
             Toast.makeText(this, (R.string.toastChoosePlayer), Toast.LENGTH_LONG).show();
     }

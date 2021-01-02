@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Game stats</string>
+    <string name="username">E-mail</string>
+    <string name="password">Lozinka</string>
+    <string name="sign_in">Prijavi se</string>
+    <string name="retypePassword">Ponovo upišite lozinku</string>
+    <string name="register">Registriraj se</string>
+    <string name="fullName">Puno ime</string>
+    <string name="errorEmailVerification">Provjerite e-mail da potvrdite svoj račun</string>
+    <string name="errorLogin">Greška u logiranju!</string>
+    <string name="errorPasswordLength">Molimo koristite lozinku dugu barem  6 znakova</string>
+    <string name="errorEmail">Provjerite e-mail adresu</string>
+    <string name="errorEmptyFields">Neka polja su prazna</string>
+    <string name="errorPasswordMissmatch">Unesene lozinke se ne podudaraju</string>
+    <string name="successfulRegistration">Korisnik uspješno registriran</string>
+    <string name="unsuccessfulRegistration">Greška u registriranju! Pokušajte ponovo!</string>
+    <string name="welcomeSplash">Dobrodošao\u0020</string>
+    <string name="welcomeSplashAlternative">Dobrodošao</string>
+    <string name="choose_players">Odaberi igrače!</string>
+    <string name="done">Gotovo</string>
+    <string name="choose_team">Odaberi tim</string>
+    <string name="choose">Odaberi</string>
+    <string name="manage_teams">Upravljaj timovima</string>
+    <string name="join_team">Pridruži se timu</string>
+    <string name="team_name">Ime tima</string>
+    <string name="team_password">Lozinka tima</string>
+    <string name="join">Pridruži se</string>
+    <string name="create_team">Izradi tim</string>
+    <string name="create">Izradi</string>
+    <string name="who_won">Tko je pobjedio?</string>
+    <string name="add_win">Dodaj pobjedu</string>
+    <string name="toastTeamJoined">Uspješno pridruživanje timu</string>
+    <string name="toastErrorFetching">Problem sa dohvaćanjem podataka</string>
+    <string name="labelGamesPlayed">Broj igranih</string>
+    <string name="labelGameToWinRatio">Omjer pobjeđenih i igranih</string>
+    <string name="labelWins">Pobjede</string>
+    <string name="toastError">Greška</string>
+    <string name="toastChooseTeam">Potrebno je prvo pridružiti se ili kreirati tim</string>
+    <string name="toastChoosePlayer">Potrebno je odabrati barem jednog igrača</string>
+    <string name="toastDataAdded">Podaci uspješno dodani</string>
+</resources>
