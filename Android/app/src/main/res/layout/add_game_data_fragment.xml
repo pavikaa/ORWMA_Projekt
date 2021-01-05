@@ -24,7 +24,7 @@
         />
     <Button
         android:id="@+id/btnAddWin"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

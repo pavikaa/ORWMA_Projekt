@@ -2,6 +2,7 @@ package com.markopavicic.orwma_projekt;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,8 +74,9 @@ public class AddGameDataFragment extends Fragment implements View.OnClickListene
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 Intent i = new Intent(getActivity(), DataAddedSplash.class);
-                                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(i);
+                                                getActivity().finish();
                                             }
                                         });
                                     }

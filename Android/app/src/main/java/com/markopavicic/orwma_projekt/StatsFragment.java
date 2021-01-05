@@ -160,7 +160,7 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
         pieDataGamesToWin.setDrawValues(true);
 
         pcWins.setData(pieDataWins);
-        pcWins.setCenterText(getString(R.string.labelWins));
+        pcWins.setCenterText("Wins");
         pcWins.setCenterTextSize(20f);
         pcWins.getDescription().setEnabled(false);
         pcWins.invalidate();
@@ -170,7 +170,7 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
 
         pcGames.setData(pieDataGames);
         pcGames.invalidate();
-        pcGames.setCenterText(getString(R.string.labelGamesPlayed));
+        pcGames.setCenterText("Games played");
         pcGames.setCenterTextSize(20f);
         pcGames.getDescription().setEnabled(false);
         l = pcGames.getLegend();
@@ -178,7 +178,7 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
 
         pcGamesToWin.setData(pieDataGamesToWin);
         pcGamesToWin.invalidate();
-        pcGamesToWin.setCenterText(getString(R.string.labelGameToWinRatio));
+        pcGamesToWin.setCenterText("Win to game ration");
         pcGamesToWin.setCenterTextSize(20f);
         pcGamesToWin.getDescription().setEnabled(false);
         l = pcGamesToWin.getLegend();

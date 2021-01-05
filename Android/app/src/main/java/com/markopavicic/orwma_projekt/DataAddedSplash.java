@@ -31,7 +31,8 @@ public class DataAddedSplash extends AppCompatActivity {
 
         @Override
         public void run() {
-            Intent i = new Intent(DataAddedSplash.this, ChooseTeam.class);
+            Intent i = new Intent(getBaseContext(), ChooseTeam.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
             finish();
         }
