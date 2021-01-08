@@ -178,7 +178,7 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
 
         pcGamesToWin.setData(pieDataGamesToWin);
         pcGamesToWin.invalidate();
-        pcGamesToWin.setCenterText("Win to game ration");
+        pcGamesToWin.setCenterText("Win to game ratio");
         pcGamesToWin.setCenterTextSize(20f);
         pcGamesToWin.getDescription().setEnabled(false);
         l = pcGamesToWin.getLegend();
