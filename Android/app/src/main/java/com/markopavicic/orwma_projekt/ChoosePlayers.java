@@ -25,8 +25,8 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
     Button btnDone;
     DatabaseReference reference;
     ListView list;
-    List<String> playerNames, selectedPlayers;
-    String teamName;
+    List<String> playerNames, chosenPlayers;
+    String chosenTeamName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
     }
 
     private void init() {
-        teamName = getIntent().getStringExtra("ChosenTeamName");
+        chosenTeamName = getIntent().getStringExtra("chosenTeamName");
         btnDone = findViewById(R.id.btnDone);
         btnDone.setOnClickListener(ChoosePlayers.this);
         list = findViewById(R.id.playersList);
@@ -48,7 +48,7 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
                 for (DataSnapshot nameSnapshot : snapshot.getChildren()) {
                     {
                         playerNames = new ArrayList<String>();
-                        if (nameSnapshot.child("name").getValue(String.class).equals(teamName)) {
+                        if (nameSnapshot.child("name").getValue(String.class).equals(chosenTeamName)) {
                             for (DataSnapshot keySnapshot : nameSnapshot.child("Players").getChildren()) {
                                 String playerName = keySnapshot.getKey();
                                 playerNames.add(playerName);
@@ -83,17 +83,17 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
             if (checked.valueAt(i))
                 check = true;
         }
-        selectedPlayers = new ArrayList<String>();
+        chosenPlayers = new ArrayList<String>();
         if (check) {
             for (int i = 0; i < checked.size(); i++) {
                 int position = checked.keyAt(i);
                 if (checked.valueAt(i))
-                    selectedPlayers.add(list.getAdapter().getItem(position).toString());
+                    chosenPlayers.add(list.getAdapter().getItem(position).toString());
             }
-            Intent intent = new Intent(getBaseContext(), ViewPagerActivity.class);
-            intent.putStringArrayListExtra("ChosenPlayers", (ArrayList<String>) selectedPlayers);
-            intent.putExtra("teamName", teamName);
-            startActivity(intent);
+            Intent i = new Intent(getBaseContext(), ViewPagerActivity.class);
+            i.putStringArrayListExtra("chosenPlayers", (ArrayList<String>) chosenPlayers);
+            i.putExtra("chosenTeamName", chosenTeamName);
+            startActivity(i);
             finish();
         } else
             Toast.makeText(this, (R.string.toastChoosePlayer), Toast.LENGTH_LONG).show();

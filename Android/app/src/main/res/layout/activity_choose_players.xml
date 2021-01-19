@@ -12,7 +12,8 @@
         android:text="@string/choose_players"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        />
     <ListView
         android:id="@+id/playersList"
         android:layout_below="@id/tvChoosePlayers"
@@ -23,7 +24,7 @@
         android:layout_above="@id/btnDone"/>
     <Button
         android:id="@+id/btnDone"
-        android:layout_width="130dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

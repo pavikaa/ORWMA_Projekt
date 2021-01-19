@@ -27,7 +27,7 @@ public class TeamManager extends AppCompatActivity implements View.OnClickListen
     DatabaseReference reference;
     List<String> teamNames;
     Button btnJoin, btnCreate;
-    EditText etPassword, etNewTeamName, etNewTeamPassword, etAvailable;
+    EditText etPassword, etNewTeamName, etNewTeamPassword, etAvailable,etNewTeamPasswordRetype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class TeamManager extends AppCompatActivity implements View.OnClickListen
         etPassword = findViewById(R.id.etJoinTeamPassword);
         etNewTeamName = findViewById(R.id.etCreateTeam);
         etNewTeamPassword = findViewById(R.id.etCreateTeamPassword);
+        etNewTeamPasswordRetype = findViewById(R.id.etCreateTeamRetypePassword);
         etAvailable = findViewById(R.id.availableTeamsTV);
         btnJoin = findViewById(R.id.btnJoin);
         btnCreate = findViewById(R.id.btnCreate);
@@ -56,7 +57,15 @@ public class TeamManager extends AppCompatActivity implements View.OnClickListen
                 joinTeam(etPassword.getText().toString().trim());
                 break;
             case R.id.btnCreate:
+                if(etNewTeamPassword.getText().toString().equals(etNewTeamPasswordRetype.getText().toString()))
                 createTeam(etNewTeamName.getText().toString().trim(), etNewTeamPassword.getText().toString().trim());
+                else
+                    {
+                        etNewTeamPassword.setError(getString(R.string.errorPasswordMissmatch));
+                        etNewTeamPasswordRetype.setError(getString(R.string.errorPasswordMissmatch));
+                        etNewTeamPassword.requestFocus();
+                        etNewTeamPasswordRetype.requestFocus();
+                }
                 break;
         }
     }

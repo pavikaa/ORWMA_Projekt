@@ -47,6 +47,7 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setupPieChart();
         return inflater.inflate(R.layout.stats_fragment, container, false);
     }
 
@@ -58,8 +59,6 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
         pcGamesToWin = (PieChart) view.findViewById(R.id.pcGamesToWin);
         ViewPagerActivity activity = (ViewPagerActivity) getActivity();
         teamName = activity.getChosenTeamName();
-        setupPieChart();
-
     }
 
     private void setupPieChart() {
@@ -99,7 +98,6 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
     }
 
     private void fillPieChart() {
-
         ArrayList<PieEntry> pieWins = new ArrayList<>();
         ArrayList<PieEntry> pieGames = new ArrayList<>();
         ArrayList<PieEntry> pieGamesToWin = new ArrayList<>();
@@ -113,7 +111,7 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
         for (int i = 0; i < playerGames.size(); i++) {
             if (playerGames.get(i) != 0)
                 typeAmountMapGames.put(playerNames.get(i), (Integer) playerGames.get(i));
-            if (playerWins.get(i) != 0) {
+            if (playerWins.get(i) != 0 && playerGames.get(i) != 0) {
                 typeAmountMapWins.put(playerNames.get(i), (Integer) playerWins.get(i));
                 typeAmountMapGamesToWin.put(playerNames.get(i), (Integer) 100 * playerWins.get(i) / playerGames.get(i));
             }

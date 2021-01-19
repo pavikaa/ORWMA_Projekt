@@ -22,8 +22,8 @@ public class ViewPagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_pager);
         initViews();
         setUpPager();
-        chosenPlayers = getIntent().getStringArrayListExtra("ChosenPlayers");
-        chosenTeamName = getIntent().getStringExtra("teamName");
+        chosenPlayers = getIntent().getStringArrayListExtra("chosenPlayers");
+        chosenTeamName = getIntent().getStringExtra("chosenTeamName");
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("chosenPlayers", chosenPlayers);
         AddGameDataFragment add = new AddGameDataFragment();

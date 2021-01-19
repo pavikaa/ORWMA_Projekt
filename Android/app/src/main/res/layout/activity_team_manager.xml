@@ -36,8 +36,8 @@
     <Button
         android:id="@+id/btnJoin"
         android:layout_centerHorizontal="true"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/join"
         android:textSize="18sp"
@@ -69,14 +69,23 @@
         android:layout_marginTop="20dp"
         android:hint="@string/team_password"
         android:inputType="textPassword"/>
+    <EditText
+        android:id="@+id/etCreateTeamRetypePassword"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etCreateTeamPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="@string/retype_team_password"
+        android:inputType="textPassword"/>
     <Button
         android:id="@+id/btnCreate"
         android:layout_centerHorizontal="true"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/create"
         android:textSize="18sp"
-        android:layout_below="@id/etCreateTeamPassword"/>
+        android:layout_below="@id/etCreateTeamRetypePassword"/>
 
 </RelativeLayout>

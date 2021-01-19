@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,6 +31,7 @@ public class AddGameDataFragment extends Fragment implements View.OnClickListene
     ArrayList<String> chosenPlayers;
     Spinner spinner;
     String winner, chosenTeamName;
+    TextView chooseAgain;
 
     public static AddGameDataFragment newInstance() {
         AddGameDataFragment fragment = new AddGameDataFragment();
@@ -52,45 +55,59 @@ public class AddGameDataFragment extends Fragment implements View.OnClickListene
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
         addWin.setOnClickListener(this);
+        chooseAgain= (TextView) view.findViewById(R.id.chooseAgain);
+        chooseAgain.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        winner = spinner.getSelectedItem().toString();
-        FirebaseDatabase.getInstance().getReference().child("Teams")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot nameSnapshot : snapshot.getChildren()) {
-                            {
-                                if (nameSnapshot.child("name").getValue(String.class).equals(chosenTeamName)) {
-                                    int value = nameSnapshot.child("Players").child(winner).child("Wins").getValue(Integer.class);
-                                    value++;
-                                    nameSnapshot.child("Players").child(winner).child("Wins").getRef().setValue(value);
-                                    for (int i = 0; i < chosenPlayers.size(); i++) {
-                                        int secondValue = nameSnapshot.child("Players").child(chosenPlayers.get(i)).child("Played").getValue(Integer.class);
-                                        secondValue++;
-                                        nameSnapshot.child("Players").child(chosenPlayers.get(i)).child("Played").getRef().setValue(secondValue).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                Intent i = new Intent(getActivity(), DataAddedSplash.class);
-                                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                startActivity(i);
-                                                getActivity().finish();
-                                            }
-                                        });
+        switch (v.getId()) {
+            case R.id.btnAddWin:
+            winner = spinner.getSelectedItem().toString();
+            FirebaseDatabase.getInstance().getReference().child("Teams")
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot nameSnapshot : snapshot.getChildren()) {
+                                {
+                                    if (nameSnapshot.child("name").getValue(String.class).equals(chosenTeamName)) {
+                                        int value = nameSnapshot.child("Players").child(winner).child("Wins").getValue(Integer.class);
+                                        value++;
+                                        nameSnapshot.child("Players").child(winner).child("Wins").getRef().setValue(value);
+                                        for (int i = 0; i < chosenPlayers.size(); i++) {
+                                            int secondValue = nameSnapshot.child("Players").child(chosenPlayers.get(i)).child("Played").getValue(Integer.class);
+                                            secondValue++;
+                                            nameSnapshot.child("Players").child(chosenPlayers.get(i)).child("Played").getRef().setValue(secondValue).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Intent i = new Intent(getActivity(), DataAddedSplash.class);
+                                                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    i.putExtra("chosenPlayers", chosenPlayers);
+                                                    i.putExtra("chosenTeamName", chosenTeamName);
+                                                    startActivity(i);
+                                                    getActivity().finish();
+                                                }
+                                            });
+                                        }
                                     }
-                                }
 
+                                }
                             }
+
                         }
 
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                        }
+                    });
+            break;
+            case R.id.chooseAgain:
+                Intent i = new Intent(getActivity(), ChooseTeam.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+                getActivity().finish();
+                break;
+        }
     }
 }

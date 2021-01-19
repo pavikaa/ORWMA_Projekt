@@ -39,4 +39,6 @@
     <string name="toastChooseTeam">Potrebno je prvo pridružiti se ili kreirati tim</string>
     <string name="toastChoosePlayer">Potrebno je odabrati barem jednog igrača</string>
     <string name="toastDataAdded">Podaci uspješno dodani</string>
+    <string name="retype_team_password">Ponovo unesite lozinku</string>
+    <string name="choose_again">Biraj ponovo</string>
 </resources>

@@ -38,4 +38,6 @@
     <string name="toastDataAdded">Data added successfully</string>
     <string name="welcomeSplash">Welcome\u0020</string>
     <string name="welcomeSplashAlternative">Welcome Player</string>
+    <string name="retype_team_password">Retype team password</string>
+    <string name="choose_again">Choose again</string>
 </resources>

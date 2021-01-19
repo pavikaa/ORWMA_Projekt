@@ -24,12 +24,23 @@
         />
     <Button
         android:id="@+id/btnAddWin"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
+        android:layout_above="@id/chooseAgain"
+        android:layout_marginBottom="70dp"
         android:text="@string/add_win"
         android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/chooseAgain"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_again"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        />
 
 </RelativeLayout>
