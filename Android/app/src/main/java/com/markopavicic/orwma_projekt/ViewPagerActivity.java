@@ -39,7 +39,6 @@ public class ViewPagerActivity extends AppCompatActivity {
         PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(pagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-        mViewPager.setPageTransformer(false, new DepthPageTransformer());
     }
 
     public ArrayList<String> getChosenPlayers() {

@@ -48,7 +48,7 @@ public class ChooseTeam extends AppCompatActivity implements View.OnClickListene
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (check) {
-                                check=!check;
+                                check = !check;
                                 for (DataSnapshot nameSnapshot : snapshot.getChildren()) {
                                     if (nameSnapshot.child("Players").child(fullName).exists()) {
                                         String teamName = nameSnapshot.child("name").getValue(String.class);
@@ -94,7 +94,6 @@ public class ChooseTeam extends AppCompatActivity implements View.OnClickListene
                     Intent i = new Intent(getBaseContext(), ChoosePlayers.class);
                     i.putExtra("chosenTeamName", name);
                     startActivity(i);
-                    finish();
                 } else {
                     Toast.makeText(ChooseTeam.this, (R.string.toastChooseTeam), Toast.LENGTH_LONG).show();
                     startActivity(new Intent(this, TeamManager.class));

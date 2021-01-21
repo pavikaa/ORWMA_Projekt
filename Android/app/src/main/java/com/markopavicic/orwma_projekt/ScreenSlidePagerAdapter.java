@@ -17,7 +17,7 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
+            case 1:
                 return StatsFragment.newInstance();
             default:
                 return AddGameDataFragment.newInstance();
@@ -27,7 +27,7 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        if (position == 0)
+        if (position == 1)
             return "Stats";
         else
             return "Add game data";

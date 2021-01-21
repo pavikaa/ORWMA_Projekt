@@ -1,46 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddGameDataFragment">
+
     <TextView
         android:id="@+id/whoWon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/who_won"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp"
         android:layout_marginTop="100dp"
-        />
+        android:text="@string/who_won"
+        android:textColor="@color/text_color"
+        android:textSize="30sp" />
+
     <Spinner
         android:id="@+id/dropDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/whoWon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        />
+        android:layout_marginTop="80dp" />
+
     <Button
         android:id="@+id/btnAddWin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_above="@id/chooseAgain"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="70dp"
+        android:backgroundTint="@color/button_color"
         android:text="@string/add_win"
-        android:textSize="20sp"/>
+        android:textColor="@color/text_color"
+        android:textSize="20sp" />
+
     <TextView
         android:id="@+id/chooseAgain"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="40dp"
-        android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/choose_again"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        />
+        android:layout_margin="40dp"
+        android:text="@string/choose_again"
+        android:textColor="@color/text_color"
+        android:textSize="20sp" />
 
 </RelativeLayout>

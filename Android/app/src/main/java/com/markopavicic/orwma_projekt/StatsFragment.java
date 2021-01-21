@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,9 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -181,6 +176,15 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
         pcGamesToWin.getDescription().setEnabled(false);
         l = pcGamesToWin.getLegend();
         l.setEnabled(false);
+        pcGames.setBackgroundColor(Color.rgb(18, 18, 18));
+        pcGamesToWin.setBackgroundColor(Color.rgb(18, 18, 18));
+        pcWins.setBackgroundColor(Color.rgb(18, 18, 18));
+        pcGames.setHoleColor(Color.rgb(18, 18, 18));
+        pcGames.setCenterTextColor(Color.rgb(220, 220, 220));
+        pcGamesToWin.setHoleColor(Color.rgb(18, 18, 18));
+        pcGamesToWin.setCenterTextColor(Color.rgb(220, 220, 220));
+        pcWins.setHoleColor(Color.rgb(18, 18, 18));
+        pcWins.setCenterTextColor(Color.rgb(220, 220, 220));
     }
 
     @Override
