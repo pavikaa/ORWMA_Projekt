@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Game stats</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marko Pavičić">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyD4fHPPi-1jpURi2p_W-56sNrT2SsYjVx8",
+            authDomain: "orwmaprojekt-c9cbb.firebaseapp.com",
+            databaseURL: "https://orwmaprojekt-c9cbb-default-rtdb.firebaseio.com",
+            projectId: "orwmaprojekt-c9cbb",
+            storageBucket: "orwmaprojekt-c9cbb.appspot.com",
+            messagingSenderId: "972506753102",
+            appId: "1:972506753102:web:cfdc1c43572e615e0a3b1f"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script>
+        var loggedInPlayer = "Marko Pavičić"; //TODO
+        var rootRef = firebase.database().ref();
+        var teamsRef = rootRef.child("Teams");
+        var playerNames = [];
+        var teamNames = [];
+        teamsRef.on("value", function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                if (childSnapshot.child("Players").child(loggedInPlayer).exists()) {
+                    var teamName = childSnapshot.child("name").val()
+                    teamNames.push(teamName);
+                    
+                }
+            });
+            for (var i = 0; i < playerNames.length; i++)
+                console.log(playerNames[i]);
+               
+        });
+            teamsRef.on("value",function(snapshot)
+            {
+                snapshot.forEach(function(childSnapshot)
+                {
+                    var playerName = childSnapshot.child("Players").key;
+                    playerNames.push(playerName);
+                });
+                
+            for (var i = 0; i < teamNames.length; i++)
+                console.log(teamNames[i]);
+            });
+    </script>
+
+    <script>
+        var myChart = document.getElementById('myChart').getContext('2d');
+        var massPopChart = new Chart(myChart, {
+            type: 'pie',
+            data: {
+                labels: ['Jedan', 'Dva', 'Tri'],
+                datasets: [{
+                    label: 'Vrijednosti',
+                    data: [
+                        19,
+                        12,
+                        15
+                    ]
+                }]
+            },
+            options: {}
+        });
+    </script>
+</body>
+
+</html>
