@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="author" content="Marko Pavičić">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-    <script src="scripts.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -38,14 +37,24 @@
         firebase.initializeApp(firebaseConfig);
     </script>
     <script>
-        var loggedInPlayer = "Marko Pavičić"; //TODO
+        var loggedInPlayerId = sessionStorage.getItem('loggedInUser');
+        var loggedInPlayerName;
         var rootRef = firebase.database().ref();
         var teamsRef = rootRef.child("Teams");
+        var playersRef = rootRef.child("Players");
         var playerNames = [];
         var teamNames = [];
+        playersRef.once("value",function(snapshot){
+            snapshot.forEach(function(childSnapshot){
+                loggedInPlayerName = childSnapshot.child(loggedInPlayerId).child("name").val();
+            console.log(loggedInPlayerId);
+            console.log(loggedInPlayerName);
+            });
+        });
         teamsRef.on("value", function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
-                if (childSnapshot.child("Players").child(loggedInPlayer).exists()) {
+                
+                if (childSnapshot.child("Players").child(loggedInPlayerName).exists()) {
                     var teamName = childSnapshot.child("name").val()
                     teamNames.push(teamName);
                     
