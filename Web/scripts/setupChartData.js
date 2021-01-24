@@ -40,10 +40,78 @@ teamsRef.on("value", function (snapshot) {
                 var playerWins=playersSnapshot.child("Wins").val();
                 var playerGames=playersSnapshot.child("Played").val();
                 playerNames.push([i,playerName,playerGames,playerWins]);
+
             });
         });
         }
     });
-    //for(var i=0;i<playerNames.length;i++)
-    console.log(playerNames[1][0]);
+
+for(var j=1;j<=10;j++){
+    var chartPlayerNames=[];
+    var chartPlayerGames=[];
+    var chartPlayerWins=[];
+var chartGameToWinRatio=[]
+    var counter=0;
+    for(var l=0;l<playerNames.length;l++)
+    {
+        if(playerNames[l][0]==j)
+        {counter++;
+        console.log(counter);
+    }
+}
+    for(var k=0;k<counter;k++)
+            {
+                if(playerNames[k][0]==j)
+                {
+                    chartPlayerNames.push(playerNames[k][1]);
+                    chartPlayerGames.push(playerNames[k][2]);
+                    chartPlayerWins.push(playerNames[k][3]);
+                    chartGameToWinRatio.push(Math.round(100*playerNames[k][3]/playerNames[k][2]))
+                    console.log(chartPlayerNames[k]);
+                }
+                else
+                counter++;
+            }
+
+        var myChart = document.getElementById('chart'+j+1).getContext('2d');
+        var massPopChart = new Chart(myChart, {
+            type: 'pie',
+            data: {
+                labels: chartPlayerNames,
+                datasets: [{
+                    label: 'Vrijednosti',
+                    data: chartPlayerWins,
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                }]
+            },
+            options: {}
+        });
+    
+    var myChart = document.getElementById('chart'+j+2).getContext('2d');
+    var massPopChart = new Chart(myChart, {
+        type: 'pie',
+        data: {
+            labels: chartPlayerNames,
+            datasets: [{
+                label: 'Vrijednosti',
+                data: chartPlayerGames,
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+            }]
+        },
+        options: {}
+    });
+var myChart = document.getElementById('chart'+j+3).getContext('2d');
+var massPopChart = new Chart(myChart, {
+    type: 'pie',
+    data: {
+        labels: chartPlayerNames,
+        datasets: [{
+            label: 'Vrijednosti',
+            data: chartGameToWinRatio,
+            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        }]
+    },
+    options: {}
+});
+}
 });
