@@ -10,14 +10,13 @@
 </head>
 
 <body>
-    <div id="charts" style="display:grid;width: 400px; ">
-        <canvas id="chart1" style="grid-column: 1 / 2;grid-row: 1;width: 100px; height: 100px;"></canvas>
-        <canvas id="chart2" style="grid-column: 2 / 3;grid-row: 1;width: 100px; height: 100px;"></canvas>
-        <canvas id="chart3" style="grid-column: 3 / 3;grid-row: 1;width: 100px; height: 100px;"></canvas>
+    <div id="charts" class="charts">
+        <canvas id="chart1" class="chart row1 item1"></canvas>
+        <canvas id="chart2" class="chart row1 item2"></canvas>
+        <canvas id="chart3" class="chart row1 item3"></canvas>
     </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-    <script src="initializeFirebase.js"></script>
     <script src="../scripts/setupChartData.js"></script>
     <script src="../scripts/setupChart.js"></script>
 </body>
