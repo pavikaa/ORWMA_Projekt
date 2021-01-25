@@ -18,7 +18,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       document.getElementById("login_div").style.display = "block";
     }
     if (user != null) {
-      window.location.href = '../pages/stats.html';
+      window.location.href = 'pages/stats.html';
     }
 
   }
