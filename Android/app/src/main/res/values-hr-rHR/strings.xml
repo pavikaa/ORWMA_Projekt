@@ -6,7 +6,7 @@
     <string name="sign_in">Prijavi se</string>
     <string name="retypePassword">Ponovo upišite lozinku</string>
     <string name="register">Registriraj se</string>
-    <string name="fullName">Puno ime</string>
+    <string name="fullName">Korisničko ime</string>
     <string name="errorEmailVerification">Provjerite e-mail da potvrdite svoj račun</string>
     <string name="errorLogin">Greška u logiranju!</string>
     <string name="errorPasswordLength">Molimo koristite lozinku dugu barem  6 znakova</string>
@@ -41,4 +41,6 @@
     <string name="toastDataAdded">Podaci uspješno dodani</string>
     <string name="retype_team_password">Ponovo unesite lozinku</string>
     <string name="choose_again">Biraj ponovo</string>
+    <string name="verified">Verificiran</string>
+    <string name="errorUsernameExists">Korisničko ime već postoji.</string>
 </resources>

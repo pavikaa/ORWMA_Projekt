@@ -40,7 +40,6 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
         btnDone = findViewById(R.id.btnDone);
         btnDone.setOnClickListener(ChoosePlayers.this);
         list = findViewById(R.id.playersList);
-
         reference = FirebaseDatabase.getInstance().getReference();
         reference.child("Teams").addValueEventListener(new ValueEventListener() {
             @Override
@@ -55,23 +54,19 @@ public class ChoosePlayers extends AppCompatActivity implements View.OnClickList
                                 setupListView();
                             }
                         }
-
                     }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
 
     private void setupListView() {
 
-        list.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_multiple_choice, playerNames));
+        list.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, playerNames));
         list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
     }
 

@@ -36,7 +36,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
-
         mAuth = FirebaseAuth.getInstance();
         tvSignIn = findViewById(R.id.signIn);
         etUsername = findViewById(R.id.etRegisterUsername);
@@ -47,7 +46,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         tvSignIn.setOnClickListener(this);
         register.setOnClickListener(this);
         progressBar = findViewById(R.id.progressBarRegister);
-
     }
 
     @Override
@@ -94,12 +92,10 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.getChildrenCount()>0)
-                {
-                    Toast.makeText(RegisterUser.this, "Username already exists.", Toast.LENGTH_LONG).show();
-                }
-                else
-                {
+                if (snapshot.getChildrenCount() > 0) {
+                    etFullName.setError(getString(R.string.errorUsernameExists));
+                    etFullName.requestFocus();
+                } else {
                     progressBar.setVisibility(View.VISIBLE);
                     mAuth.createUserWithEmailAndPassword(username, password)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -142,9 +138,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
 }

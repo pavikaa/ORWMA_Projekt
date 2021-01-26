@@ -12,7 +12,7 @@ import java.util.List;
 
 public class DataAddedSplash extends AppCompatActivity {
 
-    private static final int SPLASH_TIME_OUT = 6000;
+    private static final int SPLASH_TIME_OUT = 5000;
     TextView tvDataAdded;
     String chosenTeamName;
     List<String> chosenPlayers;

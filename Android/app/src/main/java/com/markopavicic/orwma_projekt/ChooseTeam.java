@@ -63,7 +63,6 @@ public class ChooseTeam extends AppCompatActivity implements View.OnClickListene
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
                 }
@@ -72,7 +71,6 @@ public class ChooseTeam extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
-
         });
     }
 
@@ -103,6 +101,5 @@ public class ChooseTeam extends AppCompatActivity implements View.OnClickListene
                 startActivity(new Intent(this, TeamManager.class));
                 break;
         }
-
     }
 }

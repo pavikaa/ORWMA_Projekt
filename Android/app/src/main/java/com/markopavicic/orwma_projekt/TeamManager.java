@@ -20,9 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TeamManager extends AppCompatActivity implements View.OnClickListener {
     DatabaseReference reference;
     Button btnJoin, btnCreate;

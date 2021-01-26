@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if (user.isEmailVerified()) {
-                        Toast.makeText(LoginActivity.this, ("Verified"), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, (R.string.verified), Toast.LENGTH_LONG).show();
                         progressBar.setVisibility(View.GONE);
                         startActivity(new Intent(LoginActivity.this, WelcomeSplash.class));
                         finish();

@@ -87,15 +87,12 @@ public class AddGameDataFragment extends Fragment implements View.OnClickListene
                                                 });
                                             }
                                         }
-
                                     }
                                 }
-
                             }
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
-
                             }
                         });
                 break;
