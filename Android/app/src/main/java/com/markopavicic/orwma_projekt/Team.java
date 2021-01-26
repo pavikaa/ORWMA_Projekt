@@ -4,10 +4,6 @@ public class Team {
     public String name;
     public String password;
 
-    public Team() {
-
-    }
-
     public Team(String name, String password) {
         this.name = name;
         this.password = password;

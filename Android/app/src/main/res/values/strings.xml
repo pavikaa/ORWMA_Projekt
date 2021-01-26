@@ -40,4 +40,5 @@
     <string name="welcomeSplashAlternative">Welcome Player</string>
     <string name="retype_team_password">Retype team password</string>
     <string name="choose_again">Choose again</string>
+    <string name="error_username_taken">Username already taken</string>
 </resources>

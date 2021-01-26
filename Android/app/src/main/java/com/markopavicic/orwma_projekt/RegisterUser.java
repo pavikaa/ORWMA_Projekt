@@ -17,7 +17,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
@@ -84,25 +89,46 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
         String fullName = etFullName.getText().toString().trim();
-        progressBar.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(username, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            User user = new User(username, fullName);
-                            FirebaseDatabase.getInstance().getReference("Players")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        Query query = ref.child("Players").orderByChild("fullName").equalTo(fullName);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.getChildrenCount()>0)
+                {
+                    Toast.makeText(RegisterUser.this, "Username already exists.", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    progressBar.setVisibility(View.VISIBLE);
+                    mAuth.createUserWithEmailAndPassword(username, password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
+                                public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(RegisterUser.this, (R.string.successfulRegistration), Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-                                        etUsername.getText().clear();
-                                        etFullName.getText().clear();
-                                        etPassword.getText().clear();
-                                        etPassword2.getText().clear();
+                                        User user = new User(username, fullName);
+                                        FirebaseDatabase.getInstance().getReference("Players")
+                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(RegisterUser.this, (R.string.successfulRegistration), Toast.LENGTH_LONG).show();
+                                                    progressBar.setVisibility(View.GONE);
+                                                    etUsername.getText().clear();
+                                                    etFullName.getText().clear();
+                                                    etPassword.getText().clear();
+                                                    etPassword2.getText().clear();
+                                                    startActivity(new Intent(RegisterUser.this, LoginActivity.class));
+                                                    finish();
+                                                } else {
+                                                    Toast.makeText(RegisterUser.this, (R.string.unsuccessfulRegistration), Toast.LENGTH_LONG).show();
+                                                    progressBar.setVisibility(View.GONE);
+                                                    etPassword.getText().clear();
+                                                    etPassword2.getText().clear();
+                                                }
+                                            }
+                                        });
                                     } else {
                                         Toast.makeText(RegisterUser.this, (R.string.unsuccessfulRegistration), Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
@@ -111,15 +137,14 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                                     }
                                 }
                             });
-                        } else {
-                            Toast.makeText(RegisterUser.this, (R.string.unsuccessfulRegistration), Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
-                            etPassword.getText().clear();
-                            etPassword2.getText().clear();
-                        }
-                    }
-                });
-        startActivity(new Intent(RegisterUser.this, LoginActivity.class));
-        finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }

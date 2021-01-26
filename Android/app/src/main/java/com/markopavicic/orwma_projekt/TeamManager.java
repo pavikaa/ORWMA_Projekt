@@ -25,7 +25,6 @@ import java.util.List;
 
 public class TeamManager extends AppCompatActivity implements View.OnClickListener {
     DatabaseReference reference;
-    List<String> teamNames;
     Button btnJoin, btnCreate;
     EditText etPassword, etNewTeamName, etNewTeamPassword, etAvailable, etNewTeamPasswordRetype;
 
@@ -37,7 +36,6 @@ public class TeamManager extends AppCompatActivity implements View.OnClickListen
     }
 
     private void init() {
-        teamNames = new ArrayList<String>();
         reference = FirebaseDatabase.getInstance().getReference();
         etPassword = findViewById(R.id.etJoinTeamPassword);
         etNewTeamName = findViewById(R.id.etCreateTeam);
