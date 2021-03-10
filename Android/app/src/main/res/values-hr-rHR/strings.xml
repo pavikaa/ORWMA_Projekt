@@ -28,8 +28,8 @@
     <string name="join">Pridruži se</string>
     <string name="create_team">Izradi tim</string>
     <string name="create">Izradi</string>
-    <string name="who_won">Tko je pobjedio?</string>
-    <string name="add_win">Dodaj pobjedu</string>
+    <string name="who_won">Unesi redom:</string>
+    <string name="add_win">Unesi</string>
     <string name="toastTeamJoined">Uspješno pridruživanje timu</string>
     <string name="toastErrorFetching">Problem sa dohvaćanjem podataka</string>
     <string name="labelGamesPlayed">Broj igranih</string>

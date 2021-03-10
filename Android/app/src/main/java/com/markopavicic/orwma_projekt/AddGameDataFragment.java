@@ -29,6 +29,8 @@ public class AddGameDataFragment extends Fragment implements View.OnClickListene
     Spinner spinner;
     String winner, chosenTeamName;
     TextView chooseAgain;
+    Integer counter;
+    Boolean checkWinner;
 
     public static AddGameDataFragment newInstance() {
         AddGameDataFragment fragment = new AddGameDataFragment();
@@ -40,6 +42,9 @@ public class AddGameDataFragment extends Fragment implements View.OnClickListene
         ViewPagerActivity activity = (ViewPagerActivity) getActivity();
         chosenPlayers = activity.getChosenPlayers();
         chosenTeamName = activity.getChosenTeamName();
+        counter = chosenPlayers.size();
+        checkWinner = activity.getCheckWinner();
+        counter--;
         return inflater.inflate(R.layout.add_game_data_fragment, container, false);
     }
 
@@ -69,18 +74,31 @@ public class AddGameDataFragment extends Fragment implements View.OnClickListene
                                     {
                                         if (nameSnapshot.child("name").getValue(String.class).equals(chosenTeamName)) {
                                             int value = nameSnapshot.child("Players").child(winner).child("Wins").getValue(Integer.class);
+                                            int points = nameSnapshot.child("Players").child(winner).child("Points").getValue(Integer.class);
+                                            points += counter * 3;
                                             value++;
-                                            nameSnapshot.child("Players").child(winner).child("Wins").getRef().setValue(value);
+                                            if (checkWinner) {
+                                                nameSnapshot.child("Players").child(winner).child("Wins").getRef().setValue(value);
+                                            }
+                                            nameSnapshot.child("Players").child(winner).child("Points").getRef().setValue(points);
                                             for (int i = 0; i < chosenPlayers.size(); i++) {
                                                 int secondValue = nameSnapshot.child("Players").child(chosenPlayers.get(i)).child("Played").getValue(Integer.class);
-                                                secondValue++;
+                                                if (checkWinner)
+                                                    secondValue++;
                                                 nameSnapshot.child("Players").child(chosenPlayers.get(i)).child("Played").getRef().setValue(secondValue).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
+                                                        chosenPlayers.remove(winner);
                                                         Intent i = new Intent(getActivity(), DataAddedSplash.class);
+                                                        if (chosenPlayers.isEmpty()) {
+                                                            i = new Intent(getActivity(), ChooseTeam.class);
+                                                        }
+                                                        checkWinner = false;
                                                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                         i.putExtra("chosenPlayers", chosenPlayers);
                                                         i.putExtra("chosenTeamName", chosenTeamName);
+                                                        i.putExtra("counter", counter);
+                                                        i.putExtra("checkWinner", checkWinner);
                                                         startActivity(i);
                                                         getActivity().finish();
                                                     }

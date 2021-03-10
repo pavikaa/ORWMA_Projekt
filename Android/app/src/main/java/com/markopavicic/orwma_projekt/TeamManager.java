@@ -91,6 +91,9 @@ public class TeamManager extends AppCompatActivity implements View.OnClickListen
                     FirebaseDatabase.getInstance().getReference("Teams")
                             .child(teamID).child("Players").child(fullName)
                             .child("Played").setValue(0);
+                    FirebaseDatabase.getInstance().getReference("Teams")
+                            .child(teamID).child("Players").child(fullName)
+                            .child("Points").setValue(0);
 
                     FirebaseDatabase.getInstance().getReference("Teams")
                             .child(teamID).child("Players").child(fullName).child("Joined")

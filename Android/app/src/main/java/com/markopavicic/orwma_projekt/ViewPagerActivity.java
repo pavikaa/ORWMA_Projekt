@@ -15,6 +15,8 @@ public class ViewPagerActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private ArrayList<String> chosenPlayers;
     private String chosenTeamName;
+    private Integer counter;
+    private Boolean checkWinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +24,10 @@ public class ViewPagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_pager);
         initViews();
         setUpPager();
+        counter = getIntent().getIntExtra("counter", 0);
         chosenPlayers = getIntent().getStringArrayListExtra("chosenPlayers");
         chosenTeamName = getIntent().getStringExtra("chosenTeamName");
+        checkWinner = getIntent().getBooleanExtra("checkWinner", true);
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("chosenPlayers", chosenPlayers);
         AddGameDataFragment add = new AddGameDataFragment();
@@ -47,5 +51,13 @@ public class ViewPagerActivity extends AppCompatActivity {
 
     public String getChosenTeamName() {
         return chosenTeamName;
+    }
+
+    public Integer getCounter() {
+        return counter;
+    }
+
+    public Boolean getCheckWinner() {
+        return checkWinner;
     }
 }

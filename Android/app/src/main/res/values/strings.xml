@@ -25,8 +25,6 @@
     <string name="join">Join</string>
     <string name="create_team">Create team</string>
     <string name="create">Create</string>
-    <string name="who_won">Who won?</string>
-    <string name="add_win">Add win</string>
     <string name="toastTeamJoined">Team joined successfully</string>
     <string name="toastErrorFetching">Error fetching data</string>
     <string name="labelWins">Wins</string>
@@ -42,4 +40,6 @@
     <string name="choose_again">Choose again</string>
     <string name="verified">Verified</string>
     <string name="errorUsernameExists">Username already exists.</string>
+    <string name="who_won">Enter in order:</string>
+    <string name="add_win">Enter</string>
 </resources>

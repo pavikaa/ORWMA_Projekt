@@ -28,11 +28,11 @@ import java.util.List;
 import java.util.Map;
 
 public class StatsFragment extends Fragment implements View.OnClickListener {
-    PieChart pcWins, pcGames, pcGamesToWin;
+    PieChart pcWins, pcGames, pcGamesToWin, pcPoints;
     DatabaseReference reference;
     String teamName;
     List<String> playerNames;
-    List<Integer> playerWins, playerGames;
+    List<Integer> playerWins, playerGames, playerPoints;
 
 
     public static StatsFragment newInstance() {
@@ -52,6 +52,7 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
         pcWins = (PieChart) view.findViewById(R.id.pcWins);
         pcGames = (PieChart) view.findViewById(R.id.pcPlayed);
         pcGamesToWin = (PieChart) view.findViewById(R.id.pcGamesToWin);
+        pcPoints = (PieChart) view.findViewById(R.id.pcPoints);
         ViewPagerActivity activity = (ViewPagerActivity) getActivity();
         teamName = activity.getChosenTeamName();
     }
@@ -67,15 +68,18 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
                             playerNames = new ArrayList<String>();
                             playerWins = new ArrayList<Integer>();
                             playerGames = new ArrayList<Integer>();
+                            playerPoints = new ArrayList<Integer>();
                             for (DataSnapshot keySnapshot : nameSnapshot.child("Players").getChildren()) {
                                 String playerName = keySnapshot.getKey();
                                 int playerGame = keySnapshot.child("Played").getValue(Integer.class);
                                 int playerWin = keySnapshot.child("Wins").getValue(Integer.class);
+                                int playerPoint = keySnapshot.child("Points").getValue(Integer.class);
                                 playerNames.add(playerName);
                                 playerGames.add(playerGame);
                                 playerWins.add(playerWin);
+                                playerPoints.add(playerPoint);
                             }
-                            if (playerNames.size() == playerGames.size() && playerNames.size() == playerWins.size()) {
+                            if (playerNames.size() == playerGames.size() && playerNames.size() == playerWins.size() && playerNames.size() == playerPoints.size()) {
                                 fillPieChart();
                             } else
                                 Toast.makeText(getContext(), (R.string.toastErrorFetching), Toast.LENGTH_LONG).show();
@@ -96,12 +100,14 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
         ArrayList<PieEntry> pieWins = new ArrayList<>();
         ArrayList<PieEntry> pieGames = new ArrayList<>();
         ArrayList<PieEntry> pieGamesToWin = new ArrayList<>();
+        ArrayList<PieEntry> piePoints = new ArrayList<>();
 
         String label = "";
 
         Map<String, Integer> typeAmountMapWins = new HashMap<>();
         Map<String, Integer> typeAmountMapGames = new HashMap<>();
         Map<String, Integer> typeAmountMapGamesToWin = new HashMap<>();
+        Map<String, Integer> typeAmountPoints = new HashMap<>();
 
         for (int i = 0; i < playerGames.size(); i++) {
             if (playerGames.get(i) != 0)
@@ -109,6 +115,7 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
             if (playerWins.get(i) != 0 && playerGames.get(i) != 0) {
                 typeAmountMapWins.put(playerNames.get(i), (Integer) playerWins.get(i));
                 typeAmountMapGamesToWin.put(playerNames.get(i), (Integer) 100 * playerWins.get(i) / playerGames.get(i));
+                typeAmountPoints.put(playerNames.get(i), (Integer) playerPoints.get(i));
             }
         }
         //initializing colors for the entries
@@ -129,9 +136,13 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
         for (String type : typeAmountMapGamesToWin.keySet()) {
             pieGamesToWin.add(new PieEntry(typeAmountMapGamesToWin.get(type).intValue(), type));
         }
+        for (String type : typeAmountPoints.keySet()) {
+            piePoints.add(new PieEntry(typeAmountPoints.get(type).intValue(), type));
+        }
         PieDataSet pieDataSetWins = new PieDataSet(pieWins, label);
         PieDataSet pieDataSetGames = new PieDataSet(pieGames, label);
         PieDataSet pieDataSetGamesToWin = new PieDataSet(pieGamesToWin, label);
+        PieDataSet pieDataSetPoints = new PieDataSet(piePoints, label);
 
         pieDataSetWins.setValueTextSize(16f);
         pieDataSetWins.setValueTextColor(Color.rgb(255, 255, 255));
@@ -139,18 +150,23 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
         pieDataSetGames.setValueTextColor(Color.rgb(255, 255, 255));
         pieDataSetGamesToWin.setValueTextSize(16f);
         pieDataSetGamesToWin.setValueTextColor(Color.rgb(255, 255, 255));
+        pieDataSetPoints.setValueTextSize(16f);
+        pieDataSetPoints.setValueTextColor(Color.rgb(255, 255, 255));
 
         pieDataSetWins.setColors(colors);
         pieDataSetGames.setColors(colors);
         pieDataSetGamesToWin.setColors(colors);
+        pieDataSetPoints.setColors(colors);
 
         PieData pieDataWins = new PieData(pieDataSetWins);
         PieData pieDataGames = new PieData(pieDataSetGames);
         PieData pieDataGamesToWin = new PieData(pieDataSetGamesToWin);
+        PieData pieDataPoints = new PieData(pieDataSetPoints);
 
         pieDataWins.setDrawValues(true);
         pieDataGames.setDrawValues(true);
         pieDataGamesToWin.setDrawValues(true);
+        pieDataPoints.setDrawValues(true);
 
         pcWins.setData(pieDataWins);
         pcWins.setCenterText("Wins");
@@ -176,15 +192,27 @@ public class StatsFragment extends Fragment implements View.OnClickListener {
         pcGamesToWin.getDescription().setEnabled(false);
         l = pcGamesToWin.getLegend();
         l.setEnabled(false);
+
+        pcPoints.setData(pieDataPoints);
+        pcPoints.setCenterText("Points");
+        pcPoints.setCenterTextSize(20f);
+        pcPoints.getDescription().setEnabled(false);
+        pcPoints.invalidate();
+        l = pcPoints.getLegend();
+        l.setEnabled(false);
+
         pcGames.setBackgroundColor(Color.rgb(18, 18, 18));
         pcGamesToWin.setBackgroundColor(Color.rgb(18, 18, 18));
         pcWins.setBackgroundColor(Color.rgb(18, 18, 18));
+        pcPoints.setBackgroundColor(Color.rgb(18, 18, 18));
         pcGames.setHoleColor(Color.rgb(18, 18, 18));
         pcGames.setCenterTextColor(Color.rgb(220, 220, 220));
         pcGamesToWin.setHoleColor(Color.rgb(18, 18, 18));
         pcGamesToWin.setCenterTextColor(Color.rgb(220, 220, 220));
         pcWins.setHoleColor(Color.rgb(18, 18, 18));
         pcWins.setCenterTextColor(Color.rgb(220, 220, 220));
+        pcPoints.setHoleColor(Color.rgb(18, 18, 18));
+        pcPoints.setCenterTextColor(Color.rgb(220, 220, 220));
     }
 
     @Override

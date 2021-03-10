@@ -40,5 +40,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp" />
         </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pcPoints"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </ScrollView>
